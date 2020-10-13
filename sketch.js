@@ -16,6 +16,7 @@ function preload(){
   spritedata = loadJSON('./abstract/mouth-sprite.json');
   spritesheet = loadImage('./abstract/mouth-sprite.png');
   expressYourself = loadImage('./abstract/express-yourself.png');
+
 }
 
 function makeAnimation() {
@@ -33,6 +34,7 @@ function newInput(){
 }
 
 function getThreshold(){
+  
   let volume = input.getLevel();
   let threshold = 0.1;
   if (volume > threshold) {
@@ -51,10 +53,14 @@ function setup() {
   newInput();
   makeAnimation();
   mouth = new Sprite(animation, x, y, 1);
+  mouth2 = new Sprite (animation, x + 100, y, 2);
 }
 
 function draw() {
   background(255, 204, 0);
-  image(expressYourself, 0, 200 - height/2, expressYourself.width/2, expressYourself.height/2);
   getThreshold();
+  //mouth2 just demonstrates the animation
+  mouth2.show();
+  mouth2.animate();
+  image(expressYourself, 0, 200 - height/2, expressYourself.width/2, expressYourself.height/2);
 }
